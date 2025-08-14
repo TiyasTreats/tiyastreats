@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiya’s Treats</title>
+<style>
+    :root {
+        --cream: #f8ede3;
+        --pink: #f78da7;
+        --dark-brown: #5b3621;
+        --light-pink: #fbcfd7;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background-color: var(--cream);
+        color: var(--dark-brown);
+        overflow-x: hidden;
+    }
+
+    header {
+        background-color: var(--light-pink);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    header img {
+        height: 60px;
+        transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+        transform: scale(1.05);
+    }
+
+    nav a {
+        text-decoration: none;
+        margin: 0 1rem;
+        font-weight: 500;
+        color: var(--dark-brown);
+        transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+        color: var(--pink);
+    }
+
+    .hero {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+        background: linear-gradient(180deg, var(--light-pink), var(--cream));
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--dark-brown);
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin-bottom: 2rem;
+    }
+
+    .btn {
+        background-color: var(--pink);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 50px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: var(--dark-brown);
+        transform: translateY(-3px);
+    }
+
+    .section {
+        padding: 4rem 2rem;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .section.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 15px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Floating cookie illustrations */
+    .cookie {
+        position: absolute;
+        width: 60px;
+        animation: float 6s ease-in-out infinite;
+        opacity: 0.7;
+    }
+
+    .cookie1 { top: 10%; left: 5%; animation-delay: 0s; }
+    .cookie2 { top: 40%; right: 10%; animation-delay: 2s; }
+    .cookie3 { bottom: 15%; left: 20%; animation-delay: 4s; }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-15px) rotate(5deg); }
+    }
+
+
+.product-img {
+    display: block;
+    margin: 1rem auto;
+    max-width: 120px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.product-img:hover {
+    transform: scale(1.05);
+}
+
+
+    footer {
+        background-color: var(--dark-brown);
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 3rem;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <img src="images/Screenshot 2025-08-14 220439.png" alt="Tiya's Treats Logo">
+    <nav>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="policy.html">Policy</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="images/chocchip.png" alt="Cookie" class="cookie cookie1">
+    <img src="images/redvelvet.png" alt="Cookie" class="cookie cookie2">
+    <img src="images/sprinklecookie.png" alt="Cookie" class="cookie cookie3">
+    <h1>Welcome to Tiya’s Treats</h1>
+    <p>Baking joy, one cookie at a time. Freshly baked, made with love, and ready to sweeten your day.</p>
+    <button class="btn">Order Now</button>
+
+<div id="pricelist-popup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:2000;">
+    <img src="images/finalpricelist.png" alt="Price List" style="max-width:90%; max-height:90%; border-radius:15px;">
+    <button id="close-popup" style="position:absolute; top:20px; right:20px; background:#f78da7; border:none; color:white; font-size:1.2rem; padding:0.5rem 1rem; border-radius:10px; cursor:pointer;">Close</button>
+</div>
+
+</section>
+<section id="menu" class="section">
+    <h2>Our Best Sellers</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Classic Choco Chip</h3>
+            <img src="images/chocchip.png" alt="Classic Choco Chip Cookie" class="product-img">
+            <p>Gooey, warm, and timelessly delicious.</p>
+        </div>
+        <div class="card">
+            <h3>Gilded Red Velvet</h3>
+            <img src="images/redvelvet.png" alt="Gilded Red Velvet Cookie" class="product-img">
+            <p>A perfect balance of sweet and velvety bliss with milk chocchip.</p>
+        </div>
+        <div class="card">
+            <h3>Birthday Cookie</h3>
+            <img src="images/sprinklecookie.png" alt="Birthday Sprinkle Cookie" class="product-img">
+            <p>Smothered in sprinkles, irresistibly soft and fun!</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="about" class="section">
+    <h2>About Us</h2>
+    <p> At Tiya’s Treats, every bite is a hug in cookie form. Founded by Tiya, a lifelong cookie enthusiast with a passion for turning simple ingredients into unforgettable moments, our bakery is all about spreading joy—one golden, chocolate-studded treat at a time. From classic chocolate chip to inventive flavor twists, each cookie is baked with love, and a sprinkle of nostalgia. Whether you’re celebrating, gifting, or just indulging yourself (no judgment here), Tiya’s Treats is here to make life a little sweeter.</p>
+</section>
+
+<section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <p>Email: tiyatreats05@gmail.com</p>
+    <p>Instagram: @tiyas_treats</p>
+</section>
+
+<footer>
+    <p>© 2025 Tiya’s Treats. All rights reserved.</p>
+</footer>
+
+<script>
+    // Scroll-triggered fade in
+    const sections = document.querySelectorAll('.section');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+
+ const orderBtn = document.querySelector('.btn');
+    const popup = document.getElementById('pricelist-popup');
+    const closeBtn = document.getElementById('close-popup');
+
+    orderBtn.addEventListener('click', () => {
+        popup.style.display = 'flex';
+    });
+
+    closeBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+
+</script>
+
+</body>
+</html>
