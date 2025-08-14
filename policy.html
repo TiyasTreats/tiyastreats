@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiya’s Treats Policies</title>
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #e6f0f3;
+        color: #2b2b2b;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin:0;
+        opacity:0;
+        transition: opacity 1s ease;
+    }
+
+    .policy-container {
+        background-color: #dff1f9;
+        padding: 2rem;
+        border-radius: 20px;
+        max-width: 600px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+        color: #5b3621;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+
+    .back-btn {
+        margin-top: 1rem;
+        padding: 0.7rem 1.5rem;
+        background-color: #f78da7;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+        background-color: #5b3621;
+    }
+</style>
+</head>
+<body>
+<div class="policy-container">
+    <h1>Tiya's Treats Bakery Policies</h1>
+    <p><strong>Advance orders:</strong>orders must be made a day before treats are needed. For orders over 16 cookies, please give a week's notice.</p>
+    <p>A <strong>50% non-refundable deposit</strong> is required to secure your order, ensuring your treats are fresh and ready!</p>
+    <p>Payment methods: cash, pay to cell, Orange Money.</p>
+    <p>Delivery in Gaborone is P40, and for UB and BAC students, it's only P20 on campus. Pickup is available with a quick communication a day before!</p>
+    <button class="back-btn" onclick="location.href='TiyasTreats.html'">Back</button>
+</div>
+
+<script>
+    window.addEventListener('load', () => {
+        document.body.style.opacity = 1;
+    });
+</script>
+</body>
+</html>
